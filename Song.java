@@ -7,7 +7,8 @@ public class Song {
   private Rating rating;
 
   public Song(String name, String artist){
-
+    this.artist = artist;
+    this.name = name;
   }
 
   public void setFav(){
