@@ -2,7 +2,7 @@ public class Song {
   private String name;
   //private string album;
   private String artist;
-  private boolean favorite;
+  private Boolean favorite;
   public enum Rating {ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5)};
   private Rating rating;
 
@@ -14,6 +14,24 @@ public class Song {
     this.favorite = true;
   }
 
+  public String getSongTitle(){
+    String title = name;
+    return title;
+  }
 
+  public String getSongArtist(){
+    String art = artist;
+    return art;
+  }
+
+  public Boolean isFavorite() {
+    Boolean truth = favorite;
+    return truth;
+  }
+
+  public Rating getRating(){
+    Rating rat = rating;
+    return rat;
+  }
   
 }
