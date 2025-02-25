@@ -16,5 +16,19 @@ public class Album {
     this.tracklist.add(song);
   }
 
+  public String getArtist(){
+    String name = artist;
+    return name;
+  }
+
+  public String getGenre(){
+    String gen = genre;
+    return gen;
+  }
+
+  public String getAlbumTitle(){
+    String alb = title;
+    return alb;
+  }
   
 }
