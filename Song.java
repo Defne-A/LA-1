@@ -3,7 +3,8 @@ public class Song {
   //private string album;
   private String artist;
   private Boolean favorite;
-  public enum Rating {ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5)};
+  public  enum Rating {ONE, TWO, THREE, FOUR, FIVE};
+  //we can just use something like .ordinal here!
   private Rating rating;
 
   public Song(String name, String artist){
@@ -33,6 +34,10 @@ public class Song {
   public Rating getRating(){
     Rating rat = rating;
     return rat;
+  }
+  @Override
+  public String toString(){
+      return "SongName : " + getSongTitle() + " ";
   }
   
 }
