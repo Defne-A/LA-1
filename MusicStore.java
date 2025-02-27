@@ -13,6 +13,7 @@ public class MusicStore{
     //instance variables
     // in order to achieve maximum reliability, say i have a Hashmap. keys are artist name, and it contains an inner hashmap album as key and album info as value (maybe an albuminfo class?)
     private HashMap<String,HashMap<String,Album>> musicinfo = new HashMap<>();
+    
     public void readFile() throws IOException{
          BufferedReader in = new BufferedReader(new FileReader("albums.txt"));
          //temp array for each part to generate into a string
@@ -25,6 +26,7 @@ public class MusicStore{
              readAlbumInfo(textFile);
          }
          }
+    
     private void readAlbumInfo(String fname)throws IOException{
         //this function will read in the second part of the hashmap
         //as in, the Album arrayList for each artist! (Album will contain 
@@ -50,6 +52,7 @@ public class MusicStore{
         }
     }
 }
+    
 public void printLibrary(){
     //given the instance variable hashmap, go through it and ensure the data is okay!
     //This method will simply print out the current library
