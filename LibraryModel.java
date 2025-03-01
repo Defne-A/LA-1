@@ -424,7 +424,7 @@ public class LibraryModel {
         // Convert int to Rating enum
         Song.Rating ratingEnum = Song.Rating.values()[rating - 1];
         
-        // Set the rating (this requires adding a setRating method to the Song class)
+        // Set the rating
         setSongRating(song, ratingEnum);
         
         System.out.println("Rated '" + title + "' by " + artist + " as " + ratingEnum);
