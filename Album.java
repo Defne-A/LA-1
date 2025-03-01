@@ -1,11 +1,13 @@
+package la1;
+
 import java.util.ArrayList;
 
 public class Album {
   private ArrayList<Song> tracklist = new ArrayList<Song>(); //this was causing a null exception, so i changed it
-  private String artist;
-  private String genre;
-  private String title;
-  private String year;
+  private final String artist;
+  private final String genre;
+  private final String title;
+  private final String year;
   public Album(String artist, String genre, String title,String year) {
     this.artist = artist;
     this.genre = genre;
