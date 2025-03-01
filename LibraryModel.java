@@ -439,10 +439,8 @@ public class LibraryModel {
     // Helper Methods
     
     private void setSongRating(Song song, Song.Rating rating) {
-        // This method would set the rating on the song object
-        // Since the Song class doesn't have a setRating method, you'd need to add one
-        // For now, this is a placeholder
-        System.out.println("Setting rating " + rating + " (You need to implement setRating in Song class)");
+        // Call the setRating method that exists in the Song class
+        song.setRating(rating);
     }
     
     private Song findSongInLibrary(String title, String artist) {
