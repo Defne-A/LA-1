@@ -18,6 +18,7 @@ public class MusicView {
         displayWelcome();
         
         while (running) {
+        	model.resetPrintString(); //resets the output
             displayMainMenu();
             int choice = getIntInput("Enter your choice: ");
             
@@ -44,7 +45,11 @@ public class MusicView {
                     rateSong();
                     break;
                 case 8:
-                    running = false;
+                    //play a song
+                    playSong();
+                	break;
+                case 9:
+                	running = false;
                     System.out.println("Goodbye!");
                     break;
                 default:
@@ -65,12 +70,13 @@ public class MusicView {
         System.out.println("\nMain Menu:");
         System.out.println("1. Search for information from the music store");
         System.out.println("2. Search for information from your library");
-        System.out.println("3. Add something to your library");
+        System.out.println("3. Add or remove something to your library");
         System.out.println("4. Get a list of items from your library");
         System.out.println("5. Create or manage playlists");
         System.out.println("6. Mark a song as favorite");
         System.out.println("7. Rate a song");
-        System.out.println("8. Exit");
+        System.out.println("8. Play a song");
+        System.out.println("9. Exit");
     }
     
     private void searchMusicStore() {
@@ -89,16 +95,16 @@ public class MusicView {
         
         switch (choice) {
             case 1:
-                model.searchSongByTitle(searchTerm);
+                System.out.println(model.searchSongByTitle(searchTerm));
                 break;
             case 2:
-                model.searchSongByArtist(searchTerm);
+                System.out.println(model.searchSongByArtist(searchTerm));
                 break;
             case 3:
-                model.searchAlbumByTitle(searchTerm);
+                System.out.println(model.searchAlbumByTitle(searchTerm));
                 break;
             case 4:
-                model.searchAlbumByArtist(searchTerm);
+               System.out.println(model.searchAlbumByArtist(searchTerm));
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
@@ -122,48 +128,58 @@ public class MusicView {
         
         switch (choice) {
             case 1:
-                model.searchLibrarySongByTitle(searchTerm);
+                System.out.println(model.searchLibrarySongByTitle(searchTerm));
                 break;
             case 2:
-                model.searchLibrarySongByArtist(searchTerm);
+                System.out.println(model.searchLibrarySongByArtist(searchTerm));
                 break;
             case 3:
-                model.searchLibraryAlbumByTitle(searchTerm);
-                break;
+                System.out.println(model.searchLibraryAlbumByTitle(searchTerm));
             case 4:
-                model.searchLibraryAlbumByArtist(searchTerm);
+                System.out.println(model.searchLibraryAlbumByArtist(searchTerm));  
                 break;
             case 5:
-                model.searchPlaylistByName(searchTerm);
+                System.out.println(model.searchPlaylistByName(searchTerm));
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
         }
     }
-    
     private void addToLibrary() {
         System.out.println("\nAdd to Library:");
         System.out.println("1. Add a song to your library");
         System.out.println("2. Add an album to your library");
-        System.out.println("3. Return to main menu");
+        System.out.println("3. Remove a song from user library");
+        System.out.println("4. Remove an album from user library");
+        System.out.println("5. Return to main menu");
         
         int choice = getIntInput("Enter your choice: ");
         
-        if (choice == 3) return;
+        if (choice == 5) return;
         
         switch (choice) {
             case 1:
                 String songTitle = getStringInput("Enter song title: ");
                 String songArtist = getStringInput("Enter song artist: ");
-                model.addSongToLibrary(songTitle, songArtist);
+                System.out.println(model.addSongToLibrary(songTitle, songArtist));
                 break;
             case 2:
                 String albumTitle = getStringInput("Enter album title: ");
                 String albumArtist = getStringInput("Enter album artist: ");
-                model.addAlbumToLibrary(albumTitle, albumArtist);
+                System.out.println(model.addAlbumToLibrary(albumTitle, albumArtist));
                 break;
+            case 3:
+            	 songTitle = getStringInput("Enter song title: ");
+                 songArtist = getStringInput("Enter song artist: ");
+                 System.out.println(model.removeSongLibrary(songTitle, songArtist));
+                 break;
+            case 4:
+            	 albumTitle = getStringInput("Enter album title: ");
+                 albumArtist = getStringInput("Enter album artist: ");
+                 System.out.println(model.removeAlbumLibrary(albumTitle, albumArtist));
+                 break;
             default:
-                System.out.println("Invalid option. Please try again.");
+                 System.out.println("Invalid option. Please try again.");
         }
     }
     
@@ -182,19 +198,19 @@ public class MusicView {
         
         switch (choice) {
             case 1:
-                model.getLibrarySongs();
+                System.out.println(model.getLibrarySongs());
                 break;
             case 2:
-                model.getLibraryArtists();
+               System.out.println(model.getLibraryArtists());
                 break;
             case 3:
-                model.getLibraryAlbums();
+              System.out.println(model.getLibraryAlbums());
                 break;
             case 4:
-                model.getLibraryPlaylists();
+                System.out.println(model.getLibraryPlaylists());
                 break;
             case 5:
-                model.getFavoriteSongs();
+                System.out.println(model.getFavoriteSongs());
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
@@ -215,19 +231,19 @@ public class MusicView {
         switch (choice) {
             case 1:
                 String playlistName = getStringInput("Enter playlist name: ");
-                model.createPlaylist(playlistName);
+                System.out.println(model.createPlaylist(playlistName));
                 break;
             case 2:
                 String addPlaylistName = getStringInput("Enter playlist name: ");
                 String songTitle = getStringInput("Enter song title: ");
                 String songArtist = getStringInput("Enter song artist: ");
-                model.addSongToPlaylist(addPlaylistName, songTitle, songArtist);
+              System.out.println(model.addSongToPlaylist(addPlaylistName, songTitle, songArtist));
                 break;
             case 3:
                 String removePlaylistName = getStringInput("Enter playlist name: ");
                 String removeSongTitle = getStringInput("Enter song title to remove: ");
                 String removeSongArtist = getStringInput("Enter song artist: ");
-                model.removeSongFromPlaylist(removePlaylistName, removeSongTitle, removeSongArtist);
+                System.out.println(model.removeSongFromPlaylist(removePlaylistName, removeSongTitle, removeSongArtist));
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
@@ -254,6 +270,12 @@ public class MusicView {
         
         model.rateSong(songTitle, songArtist, rating);
     }
+    private void playSong() {
+    	String songTitle = getStringInput("Enter song title to play: ");
+        String songArtist = getStringInput("Enter song artist: ");
+        model.playSong(songTitle, songArtist);
+    }
+ 
     
     private String getStringInput(String prompt) {
         System.out.print(prompt);
